@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voyage — Travel Planner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ 
+    <header class="navbar" id="navbar">
+        <a href="#top" class="logo">Voyage<span>.</span></a>
+ 
+        <nav class="nav-links" id="navLinks" aria-label="Main">
+            <a href="#top" class="active">Home</a>
+            <a href="#planner">Plan a trip</a>
+            <a href="#itinerary-anchor">Itinerary</a>
+            <a href="#budget-anchor">Budget</a>
+            <a href="#planner" class="nav-cta">Start planning</a>
+        </nav>
+ 
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span>
+        </button>
+    </header>
+ 
+    <main id="top">
+ 
+        <section class="hero">
+            <div class="hero-content">
+                <p class="eyebrow">Your personal travel planner</p>
+                <h1>Your next adventure starts here.</h1>
+                <p class="hero-text">
+                    Tell us where you're going, how long you're staying,
+                    and how you like to travel. We'll shape the days and the budget.
+                </p>
+                <a href="#planner" class="hero-link">Plan my trip</a>
+            </div>
+ 
+            <div class="hero-art" aria-hidden="true">
+                <div class="sun"></div>
+                <div class="arch arch-1"></div>
+                <div class="arch arch-2"></div>
+                <div class="arch arch-3"></div>
+            </div>
+        </section>
+ 
+        <section class="planner-card" id="planner">
+ 
+            <div class="card-heading">
+                <h2>Where to next?</h2>
+                <p>Four details is all it takes.</p>
+            </div>
+ 
+            <div class="form-grid">
+ 
+                <div class="input-group">
+                    <label for="destination">Destination</label>
+                    <input
+                        type="text"
+                        id="destination"
+                        placeholder="e.g. Cape Town"
+                    >
+                </div>
+ 
+                <div class="input-group">
+                    <label for="days">Number of days</label>
+                    <input
+                        type="number"
+                        id="days"
+                        min="1"
+                        max="14"
+                        placeholder="e.g. 4"
+                    >
+                </div>
+ 
+                <div class="input-group">
+                    <label for="budget">Budget (R)</label>
+                    <input
+                        type="number"
+                        id="budget"
+                        min="1"
+                        placeholder="e.g. 8000"
+                    >
+                </div>
+ 
+                <div class="input-group">
+                    <label for="style">Travel style</label>
+                    <select id="style">
+                        <option value="adventure">Adventure</option>
+                        <option value="relaxed">Relaxed</option>
+                        <option value="culture">Culture</option>
+                        <option value="food">Food & Lifestyle</option>
+                        <option value="balanced">Balanced</option>
+                    </select>
+                </div>
+ 
+            </div>
+ 
+            <button id="planButton">
+                Create my trip
+                <span>✈</span>
+            </button>
+ 
+            <p id="errorMessage" class="error"></p>
+ 
+        </section>
+ 
+        <section id="results" class="results hidden">
+ 
+            <div class="destination-header">
+                <div>
+                    <p class="eyebrow">Your trip</p>
+                    <h2 id="destinationName">Cape Town</h2>
+                    <p id="tripSummary"></p>
+                </div>
+ 
+                <div class="weather-card">
+                    <div id="weatherIcon">☀️</div>
+                    <div>
+                        <strong id="temperature">--°C</strong>
+                        <span id="weatherDescription">Loading...</span>
+                    </div>
+                </div>
+            </div>
+ 
+            <div class="stats">
+ 
+                <div class="stat-card">
+                    <span>Trip length</span>
+                    <strong id="daysResult">--</strong>
+                    <small>days</small>
+                </div>
+ 
+                <div class="stat-card">
+                    <span>Budget</span>
+                    <strong id="budgetResult">R0</strong>
+                    <small>total</small>
+                </div>
+ 
+                <div class="stat-card">
+                    <span>Daily budget</span>
+                    <strong id="dailyBudget">R0</strong>
+                    <small>per day</small>
+                </div>
+ 
+                <div class="stat-card">
+                    <span>Travel style</span>
+                    <strong id="styleResult">--</strong>
+                    <small>selected</small>
+                </div>
+ 
+            </div>
+ 
+            <div class="content-grid">
+ 
+                <div class="itinerary-section" id="itinerary-anchor">
+                    <div class="section-heading">
+                        <p class="eyebrow">Your itinerary</p>
+                        <h3>Explore your trip</h3>
+                    </div>
+ 
+                    <div id="itinerary"></div>
+                </div>
+ 
+                <aside class="budget-section" id="budget-anchor">
+ 
+                    <div class="section-heading">
+                        <p class="eyebrow">Estimated cost</p>
+                        <h3>Budget breakdown</h3>
+                    </div>
+ 
+                    <div class="budget-list">
+ 
+                        <div>
+                            <span>Accommodation</span>
+                            <strong id="accommodationCost">R0</strong>
+                        </div>
+ 
+                        <div>
+                            <span>Food</span>
+                            <strong id="foodCost">R0</strong>
+                        </div>
+ 
+                        <div>
+                            <span>Transport</span>
+                            <strong id="transportCost">R0</strong>
+                        </div>
+ 
+                        <div>
+                            <span>Activities</span>
+                            <strong id="activitiesCost">R0</strong>
+                        </div>
+ 
+                    </div>
+ 
+                    <div class="budget-total">
+                        <span>Estimated total</span>
+                        <strong id="totalCost">R0</strong>
+                    </div>
+ 
+                </aside>
+ 
+            </div>
+ 
+        </section>
+ 
+    </main>
+ 
+    <footer>
+        <p>Voyage. Travel Planner v1</p>
+    </footer>
+ 
+    <script src="script.js"></script>
+    <script>
+        // Navigation: mobile menu, scrolled state, active link
+        (function () {
+            var nav = document.getElementById('navbar');
+            var toggle = document.getElementById('navToggle');
+            var links = document.querySelectorAll('#navLinks a:not(.nav-cta)');
+ 
+            toggle.addEventListener('click', function () {
+                var open = nav.classList.toggle('open');
+                toggle.setAttribute('aria-expanded', open);
+            });
+ 
+            document.querySelectorAll('#navLinks a').forEach(function (a) {
+                a.addEventListener('click', function () {
+                    nav.classList.remove('open');
+                    toggle.setAttribute('aria-expanded', false);
+                });
+            });
+ 
+            window.addEventListener('scroll', function () {
+                nav.classList.toggle('scrolled', window.scrollY > 10);
+                var current = links[0];
+                links.forEach(function (a) {
+                    var t = document.querySelector(a.getAttribute('href'));
+                    if (t && t.offsetParent !== null && t.getBoundingClientRect().top < 140) current = a;
+                });
+                links.forEach(function (a) { a.classList.toggle('active', a === current); });
+            }, { passive: true });
+        })();
+    </script>
+</body>
+</html>
+ 
